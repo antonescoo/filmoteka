@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <h1 class="display-4 fw-normal">Фильмы</h1>
+    {% for film in pages.items %}
+        <p><div class="col-3 col-rg-3"><img class="d-block
+        mx-lg-auto img-fluid" src="
+        ./static/images/{{ film.poster }}" alt="{{ film.name }}"
+                                            widht="200px"></div>
+        <a href="{{ url_for('film', slug=film.slug) }}">{{ film.name }}</a></p>
+    {% endfor %}
+    <nav aria-label="...">
+      <ul class="pagination">
+        <li {% if not pages.has_prev %} class="page-item disabled"{% endif %}>
+          <a href="./films?page={{ pages.prev_num }}" class="page-link">Previous</a>
+        </li>
+        {% for page in pages.iter_pages() %}
+            <li class="page-item" {% if page == pages.page
+                    %} aria-current="page"{% endif %}>
+                <a class="page-link {% if page == pages.page
+                    %}active{% endif %}" href="./films?page={{ page }}">{{ page }}</a></li>
+        {% endfor %}
+        <li {% if not pages.has_next %} class="page-item disabled"{% endif %}>
+          <a href="./films?page={{ pages.next_num }}" class="page-link">Next</a>
+        </li>
+      </ul>
+    </nav>
+{% endblock %}

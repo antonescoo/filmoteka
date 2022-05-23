@@ -1,0 +1,8 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <h1 class="display-4 fw-normal">{{ film.name }}</h1>
+    <div class="col-12"><img class="d-block mx-auto img-fluid" src="../static/images/{{
+                film.poster }}" alt="{{ film.name }}"></div>
+    <p>Режиссёр: {{ film.director }}</p>
+    <p>{{ film.description }}</p>
+{% endblock %}

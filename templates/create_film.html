@@ -1,0 +1,18 @@
+{% extends 'layout.html' %}
+{% block content %}
+    <h1 class="display-4 fw-normal">Добавить фильм</h1>
+    <div class="row col-md-6">
+        <form action="{{ url_for('create_film') }}" method="POST">
+
+            {% for field in form %}
+                <div class="form-group mb-3">
+                    {{ field.label(class='control-label') }}
+                    {{ field(class='form-control') }}
+                </div>
+            {% endfor %}
+
+            <button type="submit" class="btn btn-success">Создать</button>
+
+        </form>
+    </div>
+{% endblock %}
